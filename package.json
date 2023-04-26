@@ -8,10 +8,10 @@
     "dev-proxy": "NODE_ENV=development DEV_SERVER=1 vite",
     "build": "tsc && yarn delete && vite build && yarn create_dist",
     "create_dist": "yarn prepare_dist && yarn prepare_version && yarn copy_assets",
-    "prepare_dist": "cpx versions.json dist && cpx manifest.json dist/v24_0",
-    "prepare_version": "cpx 'build/*' dist/v24_0",
+    "prepare_dist": "cpx versions.json dist && cpx manifest.json dist/v24_0 && cpx plugin_formit.js dist/v24_0",
+    "prepare_version": "cpx 'build/*' dist/v24_0 && cpx README.md dist",
     "copy_assets": "cpx 'src/assets/*' dist/v24_0/assets && cpx 'build/assets/*' dist/v24_0/assets && cpx 'src/Addins/*' dist/v24_0",
-    "deploy-local": "yarn build && gh-pages -d dist"
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
