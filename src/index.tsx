@@ -1,33 +1,25 @@
-import { useEffect } from "react";
-import './App.css'
+import Login from './components/login.component';
+import './index.css'
 
-function App() {
-  debugger
-
-  useEffect(() => { 
-    debugger
-
-    const userapi = "https://app.spacemaker.ai/api/auth/userinfo";
-
-    fetch(`${userapi}`)
-      .then(res => {
-        if (!res.ok) {
-          // redirect to plugin login page
-          const loginpage = "https://app.spacemaker.ai/web-components/FormIt-Forma/login.html";
-          window.location.href = loginpage;
-        }
-        else {
-          // redirect to plugin index page
-          const indexpage = "https://app.spacemaker.ai/web-components/FormIt-Forma/index.html";
-          window.location.href = indexpage;
-        }
-      });
-  }, [])
-
+function Index() {
   return (
-      <div id="PluginFacadeWrapper">
-        <div id='PluginFacadeContainer'>
-          <h1 className="title">FormIt-Plugin-Facade</h1>
+      <div id="PluginWrapper">
+        <div id='PluginContainer'>
+        <h1 className="title">FormIt-Forma</h1>
+          <h3 className="title">Send data between FormIt and Forma</h3>
+          <div id="AppControls">
+            <div className="container mt-3">
+              <div id="app">
+                <div id="LoginControls" className="">
+                  <h4>Start plugin to select a project</h4>
+                  <button id="LoginButton" className="button is-link" onClick={Login.login}>
+                    <span>Start plugin</span>
+                    <i className="fab fa-github fa-lg"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
           <div id="NoAccess" hidden>
             <div>
                 <div className="alertIcon"></div>
@@ -45,4 +37,4 @@ function App() {
   )
 }
 
-export default App
+export default Index

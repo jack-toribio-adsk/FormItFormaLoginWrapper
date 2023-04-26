@@ -3,10 +3,15 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
+    "delete": "rimraf build && rimraf dist",
     "dev": "vite",
     "dev-proxy": "NODE_ENV=development DEV_SERVER=1 vite",
-    "build": "tsc && vite build",
-    "deploy-local": "gh-pages -d build"
+    "build": "tsc && yarn delete && vite build && yarn create_dist",
+    "create_dist": "yarn prepare_dist && yarn prepare_version && yarn copy_assets",
+    "prepare_dist": "cpx versions.json dist && cpx manifest.json dist/v24_0",
+    "prepare_version": "cpx 'build/*' dist/v24_0",
+    "copy_assets": "cpx 'src/assets/*' dist/v24_0/assets && cpx 'build/assets/*' dist/v24_0/assets && cpx 'src/Addins/*' dist/v24_0",
+    "deploy-local": "yarn build && gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -19,7 +24,9 @@
     "react-router-dom": "^6.8.1",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^5.0.0",
+    "cpx": "^1.5.0",
+    "rimraf": "^5.0.0"
   },
   "devDependencies": {
     "vite": "^4.1.0",
