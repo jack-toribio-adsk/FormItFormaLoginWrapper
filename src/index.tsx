@@ -1,7 +1,20 @@
+import { useState } from "react"
 import Login from './components/login.component';
 import './index.css'
 
 function Index() {
+  function loginClick() {
+    let regionSelect = (document.getElementById("region-select")) as HTMLSelectElement;
+    let region = 'us';
+    if(regionSelect !== null)
+    {
+      region = regionSelect.value;
+    }
+  
+    Login.login(region);
+  }
+  
+
   return (
       <div id="PluginWrapper">
         <div id='PluginContainer'>
@@ -11,8 +24,12 @@ function Index() {
             <div className="container mt-3">
               <div id="app">
                 <div id="LoginControls" className="">
-                  <h4>Start plugin to select a project</h4>
-                  <button id="LoginButton" className="button is-link" onClick={Login.login}>
+                  <h4>Select a region and start plugin to select a project</h4>
+                  <select id="region-select" name="region">
+                    <option value="us">spacemaker.ai</option>
+                    <option value="eu">spacemakerai.com</option>
+                  </select>
+                  <button id="LoginButton" className="button is-link" onClick={loginClick}>
                     <span>Start plugin</span>
                     <i className="fab fa-github fa-lg"></i>
                   </button>

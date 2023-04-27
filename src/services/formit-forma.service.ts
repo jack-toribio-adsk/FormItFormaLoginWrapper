@@ -14,7 +14,7 @@ class FormaSaveService {
       })[0] || null;
   }
   
-  accessSpacemaker(fromWeb)
+  accessSpacemaker(fromWeb, region)
   {
     let loginDialog = null;
     if(fromWeb)
@@ -37,8 +37,13 @@ class FormaSaveService {
     {
       //TODO for local debug, replace the first line with the following
       //const baseUrl = "https://local.spacemaker.ai:3001";
-      const baseUrl = "https://app.spacemaker.ai/web-components/FormIt-Forma/index.html";
-      const returnUrl = `${baseUrl}?loggedIn=1`;
+      let smRegionUrl = 'app.spacemaker.ai';
+      if(region === 'eu')
+      {
+        smRegionUrl = 'app.spacemakerai.com';
+      }
+      const baseUrl = `https://${smRegionUrl}/web-components/FormIt-Forma/index.html`;
+      const returnUrl = `${baseUrl}?region=${region}`;
       window.location.replace(`https://app.spacemaker.ai/auth/login?rd=${returnUrl}`);
     }
   }
