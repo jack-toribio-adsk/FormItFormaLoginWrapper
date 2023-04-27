@@ -17,9 +17,16 @@ class FormaSaveService {
   accessSpacemaker(fromWeb, region)
   {
     let loginDialog = null;
+    let smRegionUrl = 'app.spacemaker.ai';
+    if(region === 'eu')
+    {
+      smRegionUrl = 'app.spacemakerai.com';
+    }
     if(fromWeb)
     {
-      loginDialog = window.open("https://app.spacemaker.ai/auth/login?rd=https%3A%2F%2Fapp.spacemaker.ai%2Fprojects", "_blank", "width= 500px, height=500px");
+      const baseUrl = `https://${smRegionUrl}/web-components/FormIt-Forma/index.html`;
+      const returnUrl = `${baseUrl}?region=${region}`;
+      loginDialog = window.open(`https://${smRegionUrl}/auth/login?rd=${returnUrl}`, "_blank", "width= 500px, height=500px");
       let id = setInterval(() => {
         // try to retrieve cookie each 1s, and close popup in case of success
         let cookie = this.getCookie('ajs_user_id');
@@ -37,14 +44,9 @@ class FormaSaveService {
     {
       //TODO for local debug, replace the first line with the following
       //const baseUrl = "https://local.spacemaker.ai:3001";
-      let smRegionUrl = 'app.spacemaker.ai';
-      if(region === 'eu')
-      {
-        smRegionUrl = 'app.spacemakerai.com';
-      }
       const baseUrl = `https://${smRegionUrl}/web-components/FormIt-Forma/index.html`;
       const returnUrl = `${baseUrl}?region=${region}`;
-      window.location.replace(`https://app.spacemaker.ai/auth/login?rd=${returnUrl}`);
+      window.location.replace(`https://${smRegionUrl}/auth/login?rd=${returnUrl}`);
     }
   }
 }
