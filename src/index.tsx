@@ -26,8 +26,8 @@ function Index() {
                 <div id="LoginControls" className="">
                   <h4>Select a region and start plugin to select a project</h4>
                   <select id="region-select" name="region">
-                    <option value="us">spacemaker.ai</option>
-                    <option value="eu">spacemakerai.com</option>
+                    <option value="eu">spacemaker.ai</option>
+                    <option value="us">spacemakerai.com</option>
                   </select>
                   <button id="LoginButton" className="button is-link" onClick={loginClick}>
                     <span>Start plugin</span>
