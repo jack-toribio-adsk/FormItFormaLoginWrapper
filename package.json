@@ -3,14 +3,23 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "delete": "rimraf build && rimraf dist",
     "dev": "vite",
     "dev-proxy": "NODE_ENV=development DEV_SERVER=1 vite",
-    "build": "tsc && yarn delete && vite build && yarn create_dist",
-    "create_dist": "yarn prepare_dist && yarn prepare_version && yarn copy_assets",
+    
+    "build": "tsc && yarn delete && vite build",
+    "delete": "rimraf build && rimraf dist",
+
+    "create_prerelease": "yarn prepare_version_prerelease && yarn prepare_prerelease && yarn copy_assets_prerelease && cpx src/Addins/PreRelease/* dist/dev",
+    "prepare_prerelease": "cpx versions_prerelease.json dist && cpx manifest.json dist/dev && cpx plugin_formit.js dist/dev",
+    "prepare_version_prerelease": "cpx 'build/*' dist/dev && cpx README.md dist",
+    "copy_assets_prerelease": "cpx 'src/assets/*' dist/dev/assets && cpx 'build/assets/*' dist/dev/assets && cpx 'src/Addins/*' dist/dev",
+    "deploy_prerelease": "yarn prerelease && gh-pages -d dist",
+    
+    "create_dist": "yarn prepare_version && yarn prepare_dist && yarn copy_assets",
     "prepare_dist": "cpx versions.json dist && cpx manifest.json dist/v24_0 && cpx plugin_formit.js dist/v24_0",
     "prepare_version": "cpx 'build/*' dist/v24_0 && cpx README.md dist",
     "copy_assets": "cpx 'src/assets/*' dist/v24_0/assets && cpx 'build/assets/*' dist/v24_0/assets && cpx 'src/Addins/*' dist/v24_0",
+    
     "deploy": "gh-pages -d dist"
   },
   "repository": {
