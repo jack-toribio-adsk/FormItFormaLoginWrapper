@@ -18,7 +18,7 @@ class FormaSaveService {
   {
     let loginDialog = null;
     let smRegionUrl = 'app.spacemaker.ai';
-    if(region === 'eu')
+    if(region === 'us')
     {
       smRegionUrl = 'app.spacemakerai.com';
     }
