@@ -56,6 +56,12 @@ h4 {
   padding:10px;
 }
 
+#LoginControls select {
+  width:100%;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
 #LoginControls button{
   background-color: #4676a9;
   color: white;
