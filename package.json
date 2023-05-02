@@ -9,18 +9,16 @@
     "build": "tsc && yarn delete && vite build",
     "delete": "rimraf build && rimraf dist",
 
-    "create_prerelease": "yarn prepare_version_prerelease && yarn prepare_prerelease && yarn copy_assets_prerelease && cpx src/Addins/PreRelease/* dist/dev",
-    "prepare_prerelease": "cpx versions_prerelease.json dist && cpx manifest.json dist/dev && cpx plugin_formit.js dist/dev",
-    "prepare_version_prerelease": "cpx 'build/*' dist/dev && cpx README.md dist",
-    "copy_assets_prerelease": "cpx 'src/assets/*' dist/dev/assets && cpx 'build/assets/*' dist/dev/assets && cpx 'src/Addins/*' dist/dev",
-    "deploy_prerelease": "yarn prerelease && gh-pages -d dist",
-    
-    "create_dist": "yarn prepare_version && yarn prepare_dist && yarn copy_assets",
-    "prepare_dist": "cpx versions.json dist && cpx manifest.json dist/v24_0 && cpx plugin_formit.js dist/v24_0",
-    "prepare_version": "cpx 'build/*' dist/v24_0 && cpx README.md dist",
-    "copy_assets": "cpx 'src/assets/*' dist/v24_0/assets && cpx 'build/assets/*' dist/v24_0/assets && cpx 'src/Addins/*' dist/v24_0",
-    
-    "deploy": "gh-pages -d dist"
+    "create_dist": "yarn prepare_version && cpx versions_prerelease.json dist && yarn prepare_dist && yarn copy_assets",
+    "prepare_dist": "cpx versions.json dist && cpx manifest.json $npm_config_directory && cpx plugin_formit.js $npm_config_directory",
+    "prepare_version": "cpx 'build/*' $npm_config_directory && cpx README.md dist",
+    "copy_assets": "cpx 'src/assets/*' $npm_config_directory/assets && cpx 'build/assets/*' $npm_config_directory/assets && cpx 'src/Addins/*' $npm_config_directory",
+    "replace_prerelease": "cpx 'src/Addins/PreRelease/*' $npm_config_directory",
+
+    "create_version": "npm run create_dist --directory=dist/v24_0",
+    "create_prerelease": "npm run create_dist --directory=dist/dev && npm run replace_prerelease --directory=dist/dev",
+
+    "deploy": "yarn build && yarn create_version && yarn create_prerelease && gh-pages -d dist"
   },
   "repository": {
     "type": "git",
