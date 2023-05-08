@@ -17,10 +17,10 @@ class FormaSaveService {
   accessSpacemaker(fromWeb, region)
   {
     let loginDialog = null;
-    let smRegionUrl = 'app.spacemaker.ai';
+    let smRegionUrl = 'app.autodeskforma.eu';
     if(region === 'us')
     {
-      smRegionUrl = 'app.spacemakerai.com';
+      smRegionUrl = 'app.autodeskforma.com';
     }
     if(fromWeb)
     {
