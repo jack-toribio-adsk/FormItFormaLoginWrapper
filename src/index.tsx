@@ -26,8 +26,8 @@ function Index() {
                 <div id="LoginControls" className="">
                   <h4>Select a region and start plugin to select a project</h4>
                   <select id="region-select" name="region">
-                    <option value="eu">spacemaker.ai</option>
-                    <option value="us">spacemakerai.com</option>
+                    <option value="eu">app.autodeskforma.eu</option>
+                    <option value="us">app.autodeskforma.com</option>
                   </select>
                   <button id="LoginButton" className="button is-link" onClick={loginClick}>
                     <span>Start plugin</span>
