@@ -37,10 +37,8 @@ h3.title {
   padding: 0px 10px 10px 10px !important;
 }
 
-
-h4 {
-  font-size: 13px !important;
-  color: grey !important;
+#login-lbl {
+  margin-top: 10px;
 }
 
 #Login{
@@ -49,6 +47,9 @@ h4 {
 
 #MainControls, #AppControls{
   text-align: left;
+}
+
+#AppControls{
   border-top: solid 1px lightsteelblue;
 }
 
@@ -70,4 +71,14 @@ h4 {
 
 #LoginControls button i{
   margin-left: 10px;
+}
+
+#domainSelectorContainer {
+  text-align: left;
+}
+
+.fetchSelect{
+  width: 250px;
+  margin-bottom: 25px;
+  margin-top: 15px;
 }

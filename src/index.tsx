@@ -1,9 +1,11 @@
-import { useState } from "react"
 import Login from './components/login.component';
 import './index.css'
+import { WeaveSelect, WeaveSelectOption } from "./components/domain-selector/FormaComponents";
 
 function Index() {
   function loginClick() {
+    debugger
+
     let regionSelect = (document.getElementById("region-select")) as HTMLSelectElement;
     let region = 'us';
     if(regionSelect !== null)
@@ -18,19 +20,34 @@ function Index() {
   return (
       <div id="PluginWrapper">
         <div id='PluginContainer'>
-        <h1 className="title">FormIt&lt;&gt;Forma</h1>
           <h3 className="title">Send data between FormIt and Forma</h3>
           <div id="AppControls">
             <div className="container mt-3">
               <div id="app">
                 <div id="LoginControls" className="">
-                  <h4>Select a region and start plugin to select a project</h4>
-                  <select id="region-select" name="region">
-                    <option value="eu">app.autodeskforma.eu</option>
-                    <option value="us">app.autodeskforma.com</option>
-                  </select>
+                  <div id="login-lbl">Select a region and start plugin to select a project</div>
+                  <div id="domainSelectorContainer" className="col-md-12">
+                    <WeaveSelect 
+                      id="region-select"
+                      value={"eu"}
+                      class="fetchSelect"
+                    >
+                      <WeaveSelectOption 
+                        value="eu" 
+                        key="eu" 
+                        class="fetchSelectOption">
+                        app.autodeskforma.eu
+                      </WeaveSelectOption>
+                      <WeaveSelectOption 
+                        value="us" 
+                        key="us" 
+                        class="fetchSelectOption">
+                        app.autodeskforma.com
+                      </WeaveSelectOption>
+                    </WeaveSelect>
+                  </div>
                   <button id="LoginButton" className="button is-link" onClick={loginClick}>
-                    <span>Start plugin</span>
+                    <span>Login to Forma</span>
                     <i className="fab fa-github fa-lg"></i>
                   </button>
                 </div>
