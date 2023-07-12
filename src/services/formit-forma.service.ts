@@ -46,8 +46,7 @@ class FormaSaveService {
       //const baseUrl = "https://local.spacemaker.ai:3001";
       const baseUrl = `https://${smRegionUrl}/web-components/FormIt-Forma/index.html`;
       // to allow user to get back to login, we have to pass the calling url as argument on top of the region one
-      const args = encodeURI(`region;${region};callingUrl;${window.location}`);
-      const returnUrl = `${baseUrl}?args=${args}`;
+      const returnUrl = `${baseUrl}?args=region%3B${region}%3BcallingUrl%3B${window.location}`;
       window.location.replace(`https://${smRegionUrl}/auth/login?rd=${returnUrl}`);
     }
   }
