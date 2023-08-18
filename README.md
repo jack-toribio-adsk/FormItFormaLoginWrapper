@@ -17,3 +17,10 @@ then send back any new element added in FormIt to Forma.
 > 2. Once installed, the plugin will appear at the end of the tab bar on the right
 >
 > ![](https://formit3d.github.io/FormItFormaLoginWrapper/v24_0/assets/readme_image2.png)
+
+## Commands
+
+```
+npm install
+npm run dev-proxy
+```
