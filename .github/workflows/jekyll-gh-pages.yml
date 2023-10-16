@@ -33,12 +33,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Define registry
-        run: echo -e "@spacemakerai:registry=https://npm.pkg.github.com\r\n//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}\r\n" > .npmrc
-      
-      - name: Authenticate Github Package Repo (requires .npmrc file)
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.READ_GITHUB_PACKAGES_TOKEN }}" >> .npmrc
-
       - name: "Cache: Get yarn cache directory path"
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
