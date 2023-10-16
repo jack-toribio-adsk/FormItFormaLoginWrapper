@@ -28,15 +28,35 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: "Cache: Get yarn cache directory path"
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: "Cache: Set up yarn cache"
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+            key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-yarn-
+
+      # https://github.com/actions/cache/blob/master/examples.md#ruby---bundler
+      - name: "Cache: Set up bundler cache"
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: ${{ runner.os }}-gems-
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+
+      - name: Set up dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: build
+        run: yarn build
 
   # Deployment job
   deploy:
