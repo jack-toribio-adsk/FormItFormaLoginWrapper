@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "vite",
-    "dev-proxy": "yarn run prepare_deploy && npm run copy_debug && SET NODE_ENV=development && SET DEV_SERVER=1 && vite",
+    "dev-proxy": "yarn run build && npm run copy_debug && SET NODE_ENV=development && SET DEV_SERVER=1 && vite",
     "copy_debug": "cpx dist/dev/* ./dev/ && cpx dist/dev/assets/* ./dev/assets",
     "build": "yarn clean_build && yarn create_version && yarn create_prerelease",
     "clean_build": "tsc && yarn delete && vite build",
@@ -24,7 +24,6 @@
   },
   "author": "Autodesk",
   "dependencies": {
-    "@spacemakerai/react-wc-wrapper": "^2.1.2",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "cpx": "^1.5.0",
