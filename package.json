@@ -4,17 +4,19 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "vite",
-    "dev-proxy": "NODE_ENV=development DEV_SERVER=1 vite",
-    "build": "tsc && yarn delete && vite build",
+    "dev-proxy": "yarn run prepare_deploy && npm run copy_debug && SET NODE_ENV=development && SET DEV_SERVER=1 && vite",
+    "copy_debug": "cpx dist/dev/* ./dev/ && cpx dist/dev/assets/* ./dev/assets",
+    "build": "yarn clean_build && yarn create_version && yarn create_prerelease",
+    "clean_build": "tsc && yarn delete && vite build",
     "delete": "rimraf build && rimraf dist/dev",
     "create_dist": "yarn prepare_version && cpx versions_prerelease.json dist && yarn prepare_dist && yarn copy_assets",
-    "prepare_dist": "cpx versions.json dist && cpx manifest.json $npm_config_directory && cpx plugin_formit.js $npm_config_directory",
-    "prepare_version": "cpx 'build/*' $npm_config_directory && cpx README.md dist",
-    "copy_assets": "cpx 'src/assets/*' $npm_config_directory/assets && cpx 'build/assets/*' $npm_config_directory/assets && cpx 'src/Addins/*' $npm_config_directory",
-    "replace_prerelease": "cpx 'src/Addins/PreRelease/*' $npm_config_directory",
+    "prepare_dist": "cpx versions.json dist && cpx manifest.json %npm_config_directory% && cpx plugin_formit.js %npm_config_directory%",
+    "prepare_version": "cpx build/* %npm_config_directory% && cpx README.md dist",
+    "copy_assets": "cpx src/assets/* %npm_config_directory%/assets && cpx build/assets/* %npm_config_directory%/assets && cpx src/Addins/* %npm_config_directory%",
+    "replace_prerelease": "cpx src/Addins/PreRelease/* %npm_config_directory%",
     "create_version": "npm run create_dist --directory=dist/v24_1_0",
     "create_prerelease": "npm run create_dist --directory=dist/dev",
-    "deploy": "yarn build && yarn create_version && yarn create_prerelease && gh-pages -d dist"
+    "deploy": "npm run prepare_deploy && gh-pages -d dist"
   },
   "repository": {
     "type": "git",
