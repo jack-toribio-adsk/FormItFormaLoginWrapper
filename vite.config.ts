@@ -25,7 +25,7 @@ export default defineConfig({
   server: process.env.DEV_SERVER && {
     open: true,
     host: "local.autodeskforma.eu",
-    port: 3001,
+    port: 3002,
     https: {
       key: fs.readFileSync(`${os.homedir()}/.spacemaker-cli/server.pem`),
       cert: fs.readFileSync(`${os.homedir()}/.spacemaker-cli/cert.pem`),
