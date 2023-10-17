@@ -33,20 +33,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Define registry
-        run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.READ_GITHUB_PACKAGES_TOKEN }}" >> .npmrc
-
-      - name: "Cache: Get yarn cache directory path"
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: "Cache: Set up yarn cache"
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
@@ -54,7 +40,7 @@ jobs:
         run: yarn install --frozen-lockfile --prefer-offline
 
       - name: Build
-        run: yarn build
+        run: npm run build
 
   # Deployment job
   deploy:
