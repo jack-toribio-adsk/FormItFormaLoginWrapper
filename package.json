@@ -11,13 +11,13 @@
     "create_prerelease": "npm run create_pre_dist",
     "create_pre_dist": "npm run prepare_pre_version && cpx versions_prerelease.json docs && npm run prepare_pre_dist && npm run copy_pre_assets",
     "prepare_pre_dist": "cpx versions.json docs && cpx manifest.json docs/dev && cpx plugin_formit.js docs/dev",
-    "prepare_pre_version": "cpx build/* docs/dev && cpx README.md docs",
+    "prepare_pre_version": "cpx README.md docs && cpx build/* docs/dev",
     "copy_pre_assets": "cpx src/assets/* docs/dev/assets && cpx build/assets/* docs/dev/assets && cpx src/Addins/* docs/dev",
     
     "create_version": "npm run create_dist",
     "create_dist": "npm run prepare_version && cpx versions_prerelease.json docs && npm run prepare_dist && npm run copy_assets",
     "prepare_dist": "cpx versions.json docs && cpx manifest.json docs/v24_1_0 && cpx plugin_formit.js docs/v24_1_0",
-    "prepare_version": "cpx build/* docs/v24_1_0 && cpx README.md docs",
+    "prepare_version": "cpx README.md docs && cpx build/* docs/v24_1_0",
     "copy_assets": "cpx src/assets/* docs/v24_1_0/assets && cpx build/assets/* docs/v24_1_0/assets && cpx src/Addins/* docs/v24_1_0",
    
     "lint": "prettier --write . && prettier --check .",
