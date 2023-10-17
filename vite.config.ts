@@ -1,26 +1,24 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-const { resolve } = require('path')
-import fs from "fs"
-import os from "os"
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+const { resolve } = require("path");
+import fs from "fs";
+import os from "os";
 
 export default defineConfig({
-  root: '.',
-  base: './',
+  root: ".",
+  base: "./",
   build: {
-    outDir: './build',
+    outDir: "./build",
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html')
-      }
-    }
+        main: resolve(__dirname, "index.html"),
+      },
+    },
   },
-  plugins: [
-    react(),
-  ],
+  plugins: [react()],
   define: {
     __NODE_ENV__: JSON.stringify(process.env.NODE_ENV),
-    'process.env': {},
+    "process.env": {},
   },
   server: process.env.DEV_SERVER && {
     open: true,
@@ -50,7 +48,7 @@ export default defineConfig({
       "/design-system": {
         target: "https://app.autodeskforma.eu/",
         changeOrigin: true,
-      }
-    }
-  }
-})
+      },
+    },
+  },
+});

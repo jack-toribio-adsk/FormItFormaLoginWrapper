@@ -1,9 +1,9 @@
-import ReactDOM from 'react-dom/client'
+import ReactDOM from "react-dom/client";
 import { HashRouter } from "react-router-dom";
-import Index from './index'
+import Index from "./index";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <>
