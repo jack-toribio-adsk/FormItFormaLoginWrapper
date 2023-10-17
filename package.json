@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "dev": "vite",
     "dev-proxy": "npm run build && SET NODE_ENV=development && SET DEV_SERVER=1 && vite",
     "build": "npm clean_build && npm create_version && npm create_prerelease",
     "clean_build": "tsc && npm delete && vite build",
