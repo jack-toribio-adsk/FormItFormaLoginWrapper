@@ -15,8 +15,7 @@
     "copy_assets": "cpx src/assets/* %npm_config_directory%/assets && cpx build/assets/* %npm_config_directory%/assets && cpx src/Addins/* %npm_config_directory%",
     "replace_prerelease": "cpx src/Addins/PreRelease/* %npm_config_directory%",
     "create_version": "npm run create_dist --directory=docs/v24_1_0",
-    "create_prerelease": "npm run create_dist --directory=docs/dev",
-    "deploy": "npm run build && gh-pages -d docs"
+    "create_prerelease": "npm run create_dist --directory=docs/dev"
   },
   "repository": {
     "type": "git",
