@@ -4,8 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "vite",
-    "dev-proxy": "yarn run build && npm run copy_debug && SET NODE_ENV=development && SET DEV_SERVER=1 && vite",
-    "copy_debug": "cpx docs/dev/* ./dev/ && cpx docs/dev/assets/* ./dev/assets",
+    "dev-proxy": "yarn run build && SET NODE_ENV=development && SET DEV_SERVER=1 && vite",
     "build": "yarn clean_build && yarn create_version && yarn create_prerelease",
     "clean_build": "tsc && yarn delete && vite build",
     "delete": "rimraf build && rimraf docs/dev",
@@ -23,17 +22,14 @@
   },
   "author": "Autodesk",
   "dependencies": {
-    "@types/react": "^18.0.27",
-    "@types/react-dom": "^18.0.10",
-    "cpx": "^1.5.0",
-    "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.1",
-    "rimraf": "^5.0.0"
+    "react-router-dom": "^6.8.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^3.1.0",
-    "vite": "^4.1.0"
+    "vite": "^4.1.0",
+    "rimraf": "^5.0.0",
+    "cpx": "^1.5.0"
   }
 }
