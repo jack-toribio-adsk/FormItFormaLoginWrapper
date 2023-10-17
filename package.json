@@ -17,8 +17,8 @@
     "create_version": "npm run create_dist",
     "create_dist": "npm run prepare_version && npm run prepare_dist && npm run copy_assets",
     "prepare_dist": "cpx manifest.json docs/v24_1_0 --verbose && cpx plugin_formit.js docs/v24_1_0 --verbose",
-    "prepare_version": "cpx build/* docs/v24_1_0/ --verbose",
-    "copy_assets": "cpx src/assets/* docs/v24_1_0/assets --verbose && cpx build/assets/* docs/v24_1_0/assets --verbose && cpx src/Addins/* docs/v24_1_0 --verbose",
+    "prepare_version": "cpx 'build/*' 'docs/v24_1_0/' --verbose",
+    "copy_assets": "cpx 'src/assets/*' 'docs/v24_1_0/assets' --verbose && cpx build/assets/* docs/v24_1_0/assets --verbose && cpx src/Addins/* docs/v24_1_0 --verbose",
     "lint": "prettier --write . && prettier --check .",
     "prepare": "husky install"
   },
