@@ -19,7 +19,6 @@
     "prepare_dist": "cpx manifest.json docs/v24_1_0 && cpx plugin_formit.js docs/v24_1_0",
     "prepare_version": "cpx build/* docs/v24_1_0 --watch --verbose",
     "copy_assets": "cpx src/assets/* docs/v24_1_0/assets && cpx build/assets/* docs/v24_1_0/assets && cpx src/Addins/* docs/v24_1_0",
-   
     "lint": "prettier --write . && prettier --check .",
     "prepare": "husky install"
   },
