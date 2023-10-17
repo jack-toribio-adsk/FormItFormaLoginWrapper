@@ -7,11 +7,11 @@ then send back any new element added in FormIt to Forma.
 
 > 1. Inside FormIt > **Open Plugin Manager > Public > Find FormIt-Forma and toggle to install it**
 
-<!-- > ![](https://formit3d.github.io/FormItFormaLoginWrapper/v24_0/assets/readme_image1a.png) -->
+<!-- > ![](https://formit3d.github.io/FormItForma/v24_0/assets/readme_image1a.png) -->
 
 > _Or_
 >
-> **Paste the install link at the bottom of the Plugin manager and click the Add button**: [https://formit3d.github.io/FormItFormaLoginWrapper/](https://formit3d.github.io/FormItFormaLoginWrapper/)
+> **Paste the install link at the bottom of the Plugin manager and click the Add button**: [https://formit3d.github.io/FormItForma/](https://formit3d.github.io/FormItForma/)
 >
 > ![](https://formit3d.github.io/FormItFormaLoginWrapper/v24_0/assets/readme_image1b.png)
 >
