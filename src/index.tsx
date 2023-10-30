@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Mixpanel } from './mixpanel';
+import { Mixpanel } from "./mixpanel";
 import Login from "./components/login.component";
 import "./index.css";
 
 function Index() {
   function loginClick() {
-    Mixpanel.track('Redirecting to credentials', { 'Region': region });
+    Mixpanel.track("Redirecting to credentials", { Region: region });
     Login.login(region);
   }
 
@@ -14,7 +14,7 @@ function Index() {
     Array.prototype.forEach.call(regions, function (el) {
       el.classList.remove("chosen");
       if (el.id === sender.currentTarget.id) {
-        Mixpanel.track('Chosen region', { 'Region': region });
+        Mixpanel.track("Chosen region", { Region: region });
         el.classList.add("chosen");
         setRegion(sender.currentTarget.id);
       }
